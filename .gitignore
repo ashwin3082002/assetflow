@@ -1,0 +1,13 @@
+# Dependencies and build output (each project also has its own .gitignore)
+node_modules/
+dist/
+coverage/
+
+# Local configuration and uploaded files
+.env
+backend/uploads/
+backend/.test-uploads/
+
+# OS / editor noise
+.DS_Store
+*.log
