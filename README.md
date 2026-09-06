@@ -142,7 +142,7 @@ cd backend && npm test          # 14 suites: auth, RBAC matrix, validation, work
 cd frontend && npm test         # ProtectedRoute, login, list states, role-aware pages, dashboards
 ```
 
-The backend suite uses a real PostgreSQL database (`TEST_DATABASE_URL`) with `dropSchema + synchronize`, so it must run serially (`npm test` already passes `--runInBand`; do not start two Jest processes against the same test database). `npm run test:coverage` writes an HTML/text report to `backend/coverage/`. The manual end-to-end script above is mirrored in [docs/testing-strategy.md §4](docs/testing-strategy.md).
+The backend suite uses a real PostgreSQL database (`TEST_DATABASE_URL`) with `dropSchema + synchronize`, so it must run serially (`npm test` already passes `--runInBand`; do not start two Jest processes against the same test database). `npm run test:coverage` writes an HTML/text report to `backend/coverage/`. 
 
 ## 8. Architecture summary
 
@@ -160,21 +160,8 @@ backend ── Express 4 + TypeScript ── routes → validate(zod) → authen
 - **Errors**: one envelope everywhere, `{ data, meta? }` on success and `{ error: { code, message, details? } }` on failure, with 400/401/403/404/409 mapped centrally.
 - **Frontend**: `AuthContext` + `ProtectedRoute roles={[…]}`, role-specific dashboards at `/admin`, `/staff`, `/employee`, and every data view renders loading, error-with-retry and empty states. The UI only hides controls; the API is the authority.
 
-## 9. Documentation
 
-| Document | Content |
-|---|---|
-| [docs/architecture.md](docs/architecture.md) | stack justification, layering, auth/RBAC mechanics, validation, errors, uploads, configuration, folder structure, decision log |
-| [docs/database-design.md](docs/database-design.md) | entities, columns, constraints, indexes, state machines, seed data |
-| [docs/api-design.md](docs/api-design.md) | every endpoint with roles, parameters, bodies, responses and error codes |
-| [docs/business-rules.md](docs/business-rules.md) | permission matrix, workflows, invariants |
-| [docs/testing-strategy.md](docs/testing-strategy.md) | test layout, scenarios, manual demo script |
-| [docs/implementation-plan.md](docs/implementation-plan.md) | phased roadmap with outcomes per phase |
-| [docs/academic-requirements.md](docs/academic-requirements.md) | traceability of every guideline requirement to the implementation |
-
-`project_guidelines.md` and `initial_report.md` are the original course inputs.
-
-## 10. Troubleshooting
+## 9. Troubleshooting
 
 | Symptom | Fix |
 |---|---|
