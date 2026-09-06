@@ -1,5 +1,7 @@
 # AssetFlow – IT Asset Management System
 
+## Demo Video : [Watch the Demo Video](https://drive.google.com/file/d/1XD7zV0PfKz8Pm4wYEZuG9dCJUW5qF0TQ/view?usp=sharing)
+
 AssetFlow lets an organisation track every physical IT asset (laptops, monitors, headsets, …), lend units to employees through an approval workflow, record maintenance, and collect reviews. It is an academic full-stack project (App Dev Lab) built on the mandatory stack: **Node.js + Express + TypeScript**, **PostgreSQL + TypeORM**, **React + Vite**, JWT authentication and role-based access control.
 
 Three roles:
